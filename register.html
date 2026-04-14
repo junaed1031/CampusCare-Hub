@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusCare Hub | Register</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/3f7d7f8b9f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="auth-layout grid lg:grid-cols-2">
+    <section class="hero-panel relative hidden lg:flex flex-col justify-between p-12 text-white overflow-hidden">
+      <div class="glow-ring"></div>
+      <div>
+        <p class="text-sm uppercase tracking-[0.3em] text-teal-100/80">Create account</p>
+        <h1 class="mt-4 text-5xl font-black leading-tight">Join the university support platform</h1>
+        <p class="mt-6 max-w-xl text-teal-50/90 text-lg">Register as a student or support staff member and start managing campus requests efficiently.</p>
+      </div>
+    </section>
+
+    <section class="flex items-center justify-center p-6 md:p-10">
+      <div class="card w-full max-w-lg p-8 md:p-10">
+        <div class="mb-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.25em] text-teal-700">Get started</p>
+          <h2 class="mt-2 text-3xl font-bold text-slate-900">Create your profile</h2>
+          <p class="mt-2 text-sm text-slate-500">Choose student or staff. Admin accounts are created separately by an existing admin. You must verify your email before logging in.</p>
+        </div>
+
+        <form id="registerForm" class="space-y-4">
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Full Name</label>
+            <input class="form-input" type="text" name="name" placeholder="Tanim" required />
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Email</label>
+            <input class="form-input" type="email" name="email" placeholder="tanim@campus.edu" required />
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Password</label>
+            <input class="form-input" type="password" name="password" placeholder="Create a strong password" required />
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Confirm Password</label>
+            <input class="form-input" type="password" name="confirm" placeholder="Confirm your password" required />
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Role</label>
+            <select class="form-select" name="role" required>
+              <option value="student">Student</option>
+              <option value="staff">Support Staff</option>
+            </select>
+          </div>
+          <button class="btn-primary w-full rounded-xl px-4 py-3 font-semibold" type="submit">Create Account</button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-slate-600">
+          Already registered?
+          <a href="index.html" class="font-semibold text-teal-700 hover:underline">Back to login</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

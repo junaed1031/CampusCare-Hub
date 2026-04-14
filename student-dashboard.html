@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Dashboard | CampusCare Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/3f7d7f8b9f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page-shell grid lg:grid-cols-[280px_1fr]">
+    <aside class="sidebar p-6 lg:min-h-screen">
+      <div>
+        <h1 class="text-2xl font-black">CampusCare Hub</h1>
+        <p class="mt-2 text-sm text-white/70">Student Portal</p>
+      </div>
+      <nav class="mt-8 space-y-2 text-sm font-semibold">
+        <a class="active block rounded-xl px-4 py-3" href="student-dashboard.html"><i class="fa-solid fa-chart-line mr-2"></i>Dashboard</a>
+        <a class="block rounded-xl px-4 py-3" href="submit-complaint.html"><i class="fa-solid fa-plus mr-2"></i>Submit Complaint</a>
+        <a class="block rounded-xl px-4 py-3" href="student-complaints.html"><i class="fa-solid fa-list mr-2"></i>View Complaints</a>
+        <a class="block rounded-xl px-4 py-3" href="student-profile.html"><i class="fa-solid fa-user mr-2"></i>Profile</a>
+      </nav>
+      <button data-logout class="mt-10 w-full rounded-xl border border-white/20 px-4 py-3 text-left text-sm font-semibold text-white hover:bg-white/10">Logout</button>
+    </aside>
+
+    <main class="p-6 md:p-10">
+      <div class="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-sm font-semibold uppercase tracking-[0.25em] text-teal-700">Student Dashboard</p>
+          <h2 id="dashboardGreeting" class="mt-2 text-3xl font-bold text-slate-900">Hello, Student</h2>
+        </div>
+        <a href="submit-complaint.html" class="btn-primary inline-flex items-center gap-2 rounded-xl px-4 py-3 font-semibold"><i class="fa-solid fa-paper-plane"></i>New Complaint</a>
+      </div>
+
+      <section class="grid gap-4 md:grid-cols-3">
+        <div class="card p-6">
+          <p class="text-sm text-slate-500">Complaints Submitted</p>
+          <p class="mt-2 text-3xl font-black text-slate-900" id="totalComplaints">-</p>
+        </div>
+        <div class="card p-6">
+          <p class="text-sm text-slate-500">In Progress</p>
+          <p class="mt-2 text-3xl font-black text-slate-900" id="inProgressComplaints">-</p>
+        </div>
+        <div class="card p-6">
+          <p class="text-sm text-slate-500">Resolved</p>
+          <p class="mt-2 text-3xl font-black text-slate-900" id="resolvedComplaints">-</p>
+        </div>
+      </section>
+
+      <section class="card mt-6 p-6">
+        <div class="mb-4 flex items-center justify-between">
+          <h3 class="text-xl font-bold text-slate-900">Recent complaints</h3>
+          <a href="student-complaints.html" class="text-sm font-semibold text-teal-700">View all</a>
+        </div>
+        <div class="table-wrap">
+          <table class="w-full text-left text-sm">
+            <thead class="border-b border-slate-200 text-slate-500">
+              <tr>
+                <th class="px-4 py-3 font-medium">Title</th>
+                <th class="px-4 py-3 font-medium">Category</th>
+                <th class="px-4 py-3 font-medium">Status</th>
+                <th class="px-4 py-3 font-medium">Created</th>
+                <th class="px-4 py-3 font-medium">Feedback</th>
+              </tr>
+            </thead>
+            <tbody id="complaintRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="js/student.js"></script>
+</body>
+</html>

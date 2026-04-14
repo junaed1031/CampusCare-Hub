@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Complaints | CampusCare Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/3f7d7f8b9f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page-shell grid lg:grid-cols-[280px_1fr]">
+    <aside class="sidebar p-6 lg:min-h-screen">
+      <h1 class="text-2xl font-black">CampusCare Hub</h1>
+      <p class="mt-2 text-sm text-white/70">Admin Portal</p>
+      <nav class="mt-8 space-y-2 text-sm font-semibold">
+        <a class="block rounded-xl px-4 py-3" href="admin-dashboard.html"><i class="fa-solid fa-gauge mr-2"></i>Dashboard</a>
+        <a class="active block rounded-xl px-4 py-3" href="admin-complaints.html"><i class="fa-solid fa-list mr-2"></i>Complaints</a>
+        <a class="block rounded-xl px-4 py-3" href="admin-profile.html"><i class="fa-solid fa-user mr-2"></i>Profile</a>
+      </nav>
+      <button data-logout class="mt-10 w-full rounded-xl border border-white/20 px-4 py-3 text-left text-sm font-semibold text-white hover:bg-white/10">Logout</button>
+    </aside>
+
+    <main class="p-6 md:p-10">
+      <div class="card p-6 md:p-8">
+        <div class="mb-6 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p class="text-sm font-semibold uppercase tracking-[0.25em] text-teal-700">All Complaints</p>
+            <h2 class="mt-2 text-3xl font-bold text-slate-900">Manage and assign complaints</h2>
+          </div>
+          <div class="flex gap-3 w-full md:w-auto">
+            <select id="complaintCategoryFilter" class="form-select w-full md:w-52">
+              <option value="">All categories</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="table-wrap -mx-6 -mb-8 md:mx-0 md:mb-0">
+          <table class="w-full text-left text-sm">
+            <thead class="border-b border-slate-200 text-slate-500 hidden md:table-header-group">
+              <tr>
+                <th class="px-4 py-3 font-medium">Title</th>
+                <th class="px-4 py-3 font-medium">Category</th>
+                <th class="px-4 py-3 font-medium">Status</th>
+                <th class="px-4 py-3 font-medium">Created</th>
+                <th class="px-4 py-3 font-medium">Action</th>
+              </tr>
+            </thead>
+            <tbody id="complaintRows"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/complaints.js"></script>
+</body>
+</html>

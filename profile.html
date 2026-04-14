@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Profile | CampusCare Hub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/3f7d7f8b9f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="page-shell grid lg:grid-cols-[280px_1fr]">
+    <aside class="sidebar p-6 lg:min-h-screen">
+      <h1 class="text-2xl font-black">CampusCare Hub</h1>
+      <p id="portalLabel" class="mt-2 text-sm text-white/70">Account Profile</p>
+      <nav class="mt-8 space-y-2 text-sm font-semibold">
+        <a id="navDashboard" data-nav="dashboard" data-role-nav hidden class="block rounded-xl px-4 py-3" href="#"><i class="fa-solid fa-chart-line mr-2"></i>Dashboard</a>
+        <a id="navSubmit" data-nav="submit" data-role-nav hidden class="block rounded-xl px-4 py-3" href="#"><i class="fa-solid fa-plus mr-2"></i>Submit Complaint</a>
+        <a id="navComplaints" data-nav="complaints" data-role-nav hidden class="block rounded-xl px-4 py-3" href="#"><i class="fa-solid fa-list mr-2"></i>View Complaints</a>
+        <a id="navProfile" data-nav="profile" data-role-nav hidden class="active block rounded-xl px-4 py-3" href="#"><i class="fa-solid fa-user mr-2"></i>Profile</a>
+      </nav>
+      <button data-logout class="mt-10 w-full rounded-xl border border-white/20 px-4 py-3 text-left text-sm font-semibold text-white hover:bg-white/10">Logout</button>
+    </aside>
+
+    <main class="p-6 md:p-10">
+      <div class="card mx-auto max-w-2xl p-6 md:p-8">
+        <p class="text-sm font-semibold uppercase tracking-[0.25em] text-teal-700">User Profile</p>
+        <h2 class="mt-2 text-3xl font-bold text-slate-900">Your account details</h2>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p class="text-sm text-slate-500">Name</p>
+            <p id="profileName" class="mt-1 text-lg font-semibold text-slate-900">-</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+            <p class="text-sm text-slate-500">Email</p>
+            <p id="profileEmail" class="mt-1 text-lg font-semibold text-slate-900">-</p>
+          </div>
+          <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 sm:col-span-2">
+            <p class="text-sm text-slate-500">Role</p>
+            <p id="profileRole" class="mt-1 text-lg font-semibold text-slate-900">-</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/profile.js"></script>
+</body>
+</html>

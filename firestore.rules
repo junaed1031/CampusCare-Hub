@@ -1,0 +1,76 @@
+rules_version = '2'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function userDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function userRole() {
+      return signedIn() && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        ? userDoc().data.role
+        : null;
+    }
+
+    function isAdmin() {
+      return userRole() == "admin";
+    }
+
+    function isStaff() {
+      return userRole() == "staff";
+    }
+
+    function canManageComplaints() {
+      return isAdmin() || isStaff();
+    }
+
+    match /users/{userId} {
+      allow create: if signedIn()
+        && request.auth.uid == userId
+        && (request.resource.data.role == "student" || request.resource.data.role == "staff")
+        && request.resource.data.email == request.auth.token.email;
+
+      allow read: if signedIn() && (request.auth.uid == userId || isAdmin() || isStaff());
+
+      allow update: if signedIn()
+        && request.auth.uid == userId
+        && request.resource.data.role == resource.data.role;
+
+      allow delete: if isAdmin();
+    }
+
+    match /categories/{categoryId} {
+      allow read: if signedIn();
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /complaints/{complaintId} {
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.status == "open";
+
+      allow read: if signedIn()
+        && (canManageComplaints() || resource.data.userId == request.auth.uid || resource.data.assignedTo == request.auth.uid);
+
+      allow update: if canManageComplaints();
+
+      allow delete: if isAdmin();
+    }
+
+    match /feedback/{feedbackId} {
+      allow create: if signedIn()
+        && request.resource.data.rating is int
+        && request.resource.data.rating >= 1
+        && request.resource.data.rating <= 5
+        && exists(/databases/$(database)/documents/complaints/$(request.resource.data.complaintId))
+        && get(/databases/$(database)/documents/complaints/$(request.resource.data.complaintId)).data.userId == request.auth.uid;
+
+      allow read: if signedIn();
+      allow update, delete: if isAdmin();
+    }
+  }
+}

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusCare Hub | Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/3f7d7f8b9f.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="auth-layout grid lg:grid-cols-2">
+    <section class="hero-panel relative hidden lg:flex flex-col justify-between p-12 text-white overflow-hidden">
+      <div class="glow-ring"></div>
+      <div>
+        <p class="text-sm uppercase tracking-[0.3em] text-teal-100/80">CampusCare Hub</p>
+        <h1 class="mt-4 text-5xl font-black leading-tight">Smart University Support and Complaint Management System</h1>
+        <p class="mt-6 max-w-xl text-teal-50/90 text-lg">A single platform for students, administrators, and support staff to manage complaints, track resolutions, and improve campus responsiveness.</p>
+      </div>
+      <div class="grid grid-cols-3 gap-4 text-sm">
+        <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+          <p class="text-2xl font-bold">3</p>
+          <p>Roles</p>
+        </div>
+        <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+          <p class="text-2xl font-bold">Realtime</p>
+          <p>Status updates</p>
+        </div>
+        <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+          <p class="text-2xl font-bold">Secure</p>
+          <p>Firebase auth</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="flex items-center justify-center p-6 md:p-10">
+      <div class="card w-full max-w-lg p-8 md:p-10">
+        <div class="mb-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.25em] text-teal-700">Welcome back</p>
+          <h2 class="mt-2 text-3xl font-bold text-slate-900">Sign in to your account</h2>
+          <p class="mt-2 text-slate-500">Use your registered email and password to continue.</p>
+          <p class="mt-2 text-sm text-slate-500">Email verification is required before login.</p>
+        </div>
+
+        <form id="loginForm" class="space-y-4">
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Email</label>
+            <input class="form-input" type="email" name="email" placeholder="student@campus.edu" required />
+          </div>
+          <div>
+            <label class="mb-2 block text-sm font-medium text-slate-700">Password</label>
+            <input class="form-input" type="password" name="password" placeholder="••••••••" required />
+          </div>
+          <button class="btn-primary w-full rounded-xl px-4 py-3 font-semibold" type="submit">Login</button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-slate-600">
+          Don’t have an account?
+          <a href="register.html" class="font-semibold text-teal-700 hover:underline">Register here</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>
